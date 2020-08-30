@@ -10,10 +10,8 @@ Esse é um projeto pessoal e foi desenvolvido visando melhorar as minhas abilida
  - Axios: `^0.19.2`
  - Prop-types: `^15.7.2`
  - React-dom: `^16.13.1`
- - React-helmet: `^6.1.0`
  - React-redux: `^7.2.1`
  - React-router-dom: `^5.2.0`
- - React-scripts: `3.4.1`
  - Redux: `^4.0.5`
  - Styled-components": `^5.1.1`
  
