@@ -1,11 +1,11 @@
 # Consumindo e renderizando uma api de paises
-| Pagia Inicial | Pagina de Detalhes |
+| Initial Page | Details Page |
 |----------|----------|
 | ![Home Page](https://i.imgur.com/7SKLE8u.png) | ![Detail Page](https://i.imgur.com/lrvWhZB.png) |
 
-Esse é um projeto pessoal e foi desenvolvido visando melhorar as minhas abilidades com ReactJS, Styled Components e Redux.
+This is a personal project and was developed to improve my abilities with ReactJS, Styled Components and Redux.
 
-## Tecnologias utilizadas
+## Technologies used
  - React: `^16.13.1`
  - Axios: `^0.19.2`
  - Prop-types: `^15.7.2`
@@ -15,8 +15,9 @@ Esse é um projeto pessoal e foi desenvolvido visando melhorar as minhas abilida
  - Redux: `^4.0.5`
  - Styled-components": `^5.1.1`
  
-## Como baixar a aplicação
-Você deve clonar o projeto no seu computador com  o comando`git clone https://github.com/tiago-prog/consumindo-api-de-paises.git`. Após a clonagem você deve entrar via terminal na pasta `consumindo-api-de-paises-master` com o comando `cd consumindo-api-de-paises-master`.
+## How to download the application
+You must clone the project on your computer with the command`git clone https://github.com/tiago-prog/consumendo-api-de-paises.git`. After cloning you must enter the folder `consuming-api-de-paises-master` by way of the command `cd consuming-api-de-paises-master`.
 
-## Como iniciar a aplicação
-Depois de sequir os passos acima digite `npm install` para instalar as dependências, e logo em sequida, digite `npm start` e abra no seu navegador o `localhost:3000`.
+
+## How to start the application
+After following the steps above, type `npm install` to install the dependencies, and then, type `npm start` and open `localhost: 3000` in your browser.
