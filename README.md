@@ -1,4 +1,4 @@
-# Consumindo e renderizando uma api de paises
+# Consuming and rendering a country api
 | Initial Page | Details Page |
 |----------|----------|
 | ![Home Page](https://i.imgur.com/7SKLE8u.png) | ![Detail Page](https://i.imgur.com/lrvWhZB.png) |
