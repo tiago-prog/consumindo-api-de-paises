@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://restcountries.eu/rest/v2';
+const baseUrl = 'https://restcountries.com/v3.1/';
 
 export default async (service, filter) => {
   let search = `${baseUrl}/all`;
