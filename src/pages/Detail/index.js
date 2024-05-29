@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Details, Group, Flag, Item, BorderCountry,
 } from './style';
+import { object } from 'prop-types';
 
 function CountryDetails() {
   const {
@@ -38,7 +39,11 @@ function CountryDetails() {
               <Item>
                 Nome Nativo:
                 {' '}
-                <span>{nativeName}</span>
+                {Object.entries(nativeName).map((name) => (
+                  <span key={name[1].common}>
+                   {name[1].official} ({name[1].common})
+                  </span>
+                ))}
               </Item>
               <Item>
                 População:
@@ -65,18 +70,18 @@ function CountryDetails() {
               <Item>
                 Moedas:
                 {' '}
-                {currencies.map((currencie) => (
-                  <span key={currencie.code}>
-                    {currencie.code}
+                {Object.entries(currencies).map((currencie) => (
+                  <span key={currencie[1].name}>
+                   {currencie[1].name} ({currencie[1].symbol})
                   </span>
                 ))}
               </Item>
               <Item>
                 Idiomas:
                 {' '}
-                {languages.map((language) => (
-                  <span key={language.name}>
-                    {language.name}
+                {Object.entries(languages).map((language, index) =>  (
+                  <span key={index}>
+                    {language[1]}
                   </span>
                 ))}
               </Item>
@@ -85,11 +90,11 @@ function CountryDetails() {
           <Group.BorderContries>
             <Group.BorderContries.Title>Países fronteiriços:</Group.BorderContries.Title>
             <div>
-              {borders.map((country) => (
+              { borders ? borders.map((country) => (
                 <BorderCountry key={country}>
                   {country}
                 </BorderCountry>
-              ))}
+              )) : <BorderCountry>Não faz fronteira...</BorderCountry>}
             </div>
           </Group.BorderContries>
         </Group>
