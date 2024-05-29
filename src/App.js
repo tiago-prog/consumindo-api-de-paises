@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { dark, light } from './config/themes';
@@ -12,17 +12,31 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import GlobalStyle from './GlobalStyle';
 
 function App() {
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = useState(() => {
+    try {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+        return JSON.parse(storedTheme);
+      }
+      return light;
+    } catch (error) {
+      console.error('Error retrieving theme from localStorage:', error);
+      return light;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }, [theme]);
 
   const toggleTheme = () => {
-    const currentTheme = theme.title === 'dark' ? light : dark;
-    setTheme(currentTheme);
-    localStorage.setItem('theme', JSON.stringify(theme));
+    setTheme(theme => (theme.title === 'light' ? dark : light));
   };
+
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={JSON.parse(localStorage.getItem('theme')) || light}>
+      <ThemeProvider theme={theme}>
         <Header toggleTheme={toggleTheme} />
         <Container>
           <GlobalStyle />
