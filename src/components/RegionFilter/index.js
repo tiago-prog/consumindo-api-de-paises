@@ -35,7 +35,7 @@ function RegionFilter({ dispatch, searchValue }) {
           (contry) => contry.region === regions[index],
         ));
     }
-
+    
     return {
       type: 'FILTER_BY_REGION',
       filter: regions[index],

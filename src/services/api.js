@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://restcountries.com/v3.1/';
+const baseUrl = 'https://restcountries.com/v3.1';
 
 export default async (service, filter) => {
   let search = `${baseUrl}/all`;
@@ -9,6 +9,7 @@ export default async (service, filter) => {
     const validFilter = regex.test(filter);
 
     search = validFilter ? `${baseUrl}/${service}/${filter}` : `${baseUrl}/all`;
+    console.log(search)
   }
 
   const response = await axios.get(search)
