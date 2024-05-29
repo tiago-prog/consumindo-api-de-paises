@@ -4,7 +4,6 @@ const baseUrl = 'https://restcountries.com/v3.1/';
 
 export default async (service, filter) => {
   let search = `${baseUrl}/all`;
-
   if (filter) {
     const regex = new RegExp(/[a-zA-Z]/);
     const validFilter = regex.test(filter);
@@ -18,14 +17,14 @@ export default async (service, filter) => {
       if (index < 20) {
         acumulator.push({
           id: (index + 1),
-          flag: contry.flag,
-          name: contry.translations.br,
+          flag: contry.flags.png,
+          name: contry.translations.por.common,
           population: contry.population,
           region: contry.region,
           subregion: contry.subregion,
           capital: contry.capital,
-          nativeName: contry.nativeName,
-          topLevelDomain: contry.topLevelDomain,
+          nativeName: contry.name.nativeName,
+          topLevelDomain: contry.tld,
           currencies: contry.currencies,
           languages: contry.languages,
           borders: contry.borders,
