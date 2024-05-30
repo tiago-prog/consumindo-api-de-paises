@@ -9,7 +9,6 @@ export default async (service, filter) => {
     const validFilter = regex.test(filter);
 
     search = validFilter ? `${baseUrl}/${service}/${filter}` : `${baseUrl}/all`;
-    console.log(search)
   }
 
   const response = await axios.get(search)

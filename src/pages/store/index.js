@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   filter: 'All',
   searchValue: '',
   countries: api(),
-  currentTheme: '',
+  currentTheme: 'light',
 };
 
 function reducer(state = INITIAL_STATE, action) {

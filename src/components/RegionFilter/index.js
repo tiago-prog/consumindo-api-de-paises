@@ -12,7 +12,13 @@ function RegionFilter({ dispatch, searchValue }) {
   const [options, setOptions] = useState(false);
   const [filteredRegion, setFilteredRegion] = useState('');
 
-  const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  const regions = ['all', 'africa', 'americas', 'asia', 'europe', 'oceania'];
+
+  function capitalizeFirstLetter(str) {
+    return str.replace(/\b[a-z]/g, function(match) {
+      return match.charAt(0).toUpperCase() + match.slice(1);
+    });
+  }
 
   const toggleOptions = () => {
     setOptions(!options);
@@ -22,20 +28,19 @@ function RegionFilter({ dispatch, searchValue }) {
     setFilteredRegion(regions[index]);
     toggleOptions();
 
-    const regionLowerCase = regions[index].toLowerCase();
-    let countries = api('region', regionLowerCase);
+    let countries = api('region', regions[index]);
 
-    if (regionLowerCase === 'all') {
+    if (regions[index] === 'all') {
       countries = api('all');
     }
 
-    if (searchValue && regionLowerCase !== 'all') {
+    if (searchValue && regions[index] !== 'all') {
       countries = api('name', searchValue)
         .then((res) => res.filter(
           (contry) => contry.region === regions[index],
         ));
     }
-    
+
     return {
       type: 'FILTER_BY_REGION',
       filter: regions[index],
@@ -49,7 +54,7 @@ function RegionFilter({ dispatch, searchValue }) {
       onClick={options ? toggleOptions : () => {}}
     >
       <Select onClick={toggleOptions}>
-        <span>{filteredRegion || 'Filtrar por Continente'}</span>
+        <span>{capitalizeFirstLetter(filteredRegion) || 'Filtrar por Continente'}</span>
 
         <Select.Icon className={`fas fa-angle-${options ? 'down' : 'up'}`} />
       </Select>
@@ -60,12 +65,11 @@ function RegionFilter({ dispatch, searchValue }) {
       >
         {regions.map((region, index) => (
           <SelectOptions.Item
-            // eslint-disable-next-line react/no-array-index-key
             key={index}
             role="textbox"
             onClick={() => dispatch(setRegionFilter(index))}
           >
-            {region}
+            {capitalizeFirstLetter(region)}
           </SelectOptions.Item>
         ))}
       </SelectOptions>
